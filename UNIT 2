@@ -1,0 +1,86 @@
+#To implement a backtracking algorithm to find all unique combinations of candidate numbers that sum to a given target, where each candidate can be used an unlimited number of times.
+class Solution {
+public:
+    vector<vector<int>> result;
+
+    void backtrack(vector<int>& nums, int index, vector<int>& current) {
+        result.push_back(current);
+
+        for (int i = index; i < nums.size(); i++) {
+            current.push_back(nums[i]);
+
+            backtrack(nums, i + 1, current);
+
+            current.pop_back();
+        }
+    }
+
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> current;
+        backtrack(nums, 0, current);
+        return result;
+    }
+};
+
+
+
+
+
+
+#To implement a backtracking algorithm to generate all possible subsets (power set) of a given array of unique integers.
+class Solution {
+public:
+    vector<vector<int>> result;
+
+    void backtrack(vector<int>& nums, int index, vector<int>& current) {
+        result.push_back(current);
+
+        for (int i = index; i < nums.size(); i++) {
+            current.push_back(nums[i]);
+
+            backtrack(nums, i + 1, current);
+
+            current.pop_back();
+        }
+    }
+
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> current;
+        backtrack(nums, 0, current);
+        return result;
+    }
+};
+
+
+
+
+
+
+
+#To implement a recursive algorithm to find the Lowest Common Ancestor (LCA) of two given nodes in a binary tree.
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root == nullptr || root == p || root == q) {
+            return root;
+        }
+
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+
+        if (left != nullptr && right != nullptr) {
+            return root;
+        }
+
+        return left != nullptr ? left : right;
+    }
+};
+
+
+
+
+
+
+
+
