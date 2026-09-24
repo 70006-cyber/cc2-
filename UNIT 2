@@ -83,4 +83,52 @@ public:
 
 
 
+#To implement a program to repeatedly add the digits of a number until the result becomes a single digit. problem no acc to aim in leetcode
+class Solution {
+public:
+    int addDigits(int num) {
+        while (num >= 10) {
+            int sum = 0;
+            
+            while (num > 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            
+            num = sum;
+        }
+        
+        return num;
+    }
+};
 
+
+
+
+
+
+
+
+
+#Given an array nums containing n + 1 integers where each integer is in the range [1, n], find the duplicate number. There is exactly one repeated number, but it may appear more than once. You must find the duplicate without modifying the array and using only constant.
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        slow = nums[0];
+
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+
+        return slow;
+    }
+};
